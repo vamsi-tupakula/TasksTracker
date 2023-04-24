@@ -11,9 +11,9 @@ function App() {
   );
 
   useEffect(() => {
-    if (tasks === []) {
-      JSON.parse(localStorage.setItem("tasks"));
-    }
+    // if (tasks === []) {
+    //   JSON.parse(localStorage.setItem("tasks"));
+    // }
     localStorage.setItem("tasks", JSON.stringify(tasks));
   }, [tasks]);
 
