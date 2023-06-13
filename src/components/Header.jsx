@@ -2,8 +2,8 @@ import React from "react";
 
 export default function Header() {
   return (
-    <div className="bg-body-tertiary mb-3 py-2 rounded shadow-sm">
-      <h3 className="text-center">MyTodo App 🚀</h3>
+    <div className="mb-3 pt-2 pb-1">
+      <h3 className="text-center app-title">Tasks Tracker 🚀</h3>
     </div>
   );
 }

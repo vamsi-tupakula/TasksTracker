@@ -18,7 +18,7 @@ function App() {
   }, [tasks]);
 
   return (
-    <div className="container App">
+    <div className="container pb-4 shadow rounded-4 App">
       <Header />
       <InputForm tasks={tasks} setTasks={setTasks} />
       {tasks.length === 0 ? "" : <h5 className="my-3">🐎 Tasks to Complete</h5>}

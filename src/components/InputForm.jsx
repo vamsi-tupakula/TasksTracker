@@ -17,8 +17,8 @@ export default function InputForm(props) {
     <div className="input-group mb-3 w-4">
       <input
         type="text"
-        className="form-control"
-        placeholder="Water the plants......"
+        className="form-control py-2"
+        placeholder="Type something to add......"
         aria-label="todo"
         aria-describedby="button-addon2"
         value={todo}
