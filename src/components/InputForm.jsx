@@ -13,6 +13,12 @@ export default function InputForm(props) {
     setTodo("");
   };
 
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      addTodo();
+    }
+  };
+
   return (
     <div className="input-group mb-3 w-4">
       <input
@@ -25,6 +31,7 @@ export default function InputForm(props) {
         onChange={(e) => {
           setTodo(e.target.value);
         }}
+        onKeyDown={handleKeyDown}
       />
       <button
         className="btn btn-primary"
