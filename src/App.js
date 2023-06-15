@@ -29,7 +29,7 @@ function App() {
               <Todo
                 key={index}
                 index={index}
-                task={item.task}
+                item={item}
                 setTasks={setTasks}
                 tasks={tasks}
               />
@@ -46,7 +46,7 @@ function App() {
               <Completed
                 key={index}
                 index={index}
-                task={item.task}
+                item={item}
                 setTasks={setTasks}
                 tasks={tasks}
               />

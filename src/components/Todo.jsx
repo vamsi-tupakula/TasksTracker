@@ -9,13 +9,16 @@ export default function Todo(props) {
 
   return (
     <li className="list-group-item d-flex justify-content-between align-center">
-      <input
-        type="checkbox"
-        className="btn-check"
-        id="btncheck1"
-        autoComplete="off"
-      />
-      <p>{props.task}</p>
+      <p>
+        {props.item.task} &nbsp;{" "}
+        {props.item.tags.slice(0, 3).map((tag, index) => {
+          return (
+            <span key={index} className="tag">
+              {tag.toUpperCase()}
+            </span>
+          );
+        })}
+      </p>
       <button type="button" className="btn btn-success" onClick={markCompleted}>
         Done
       </button>
