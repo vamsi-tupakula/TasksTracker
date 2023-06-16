@@ -18,17 +18,18 @@ export default function Todo(props) {
         <div className="d-flex flex-column">
           <p className="task-text pl-4">{props.item.task}</p>
           <div className="tags d-flex align-items-start flex-wrap w-100">
-            {props.item.tags.slice(0, 3).map((tag, index) => {
-              return (
-                <span
-                  key={index}
-                  className="tag mt-2"
-                  onClick={() => props.setSelectedTag(tag)}
-                >
-                  {tag.toUpperCase()}
-                </span>
-              );
-            })}
+            {props.item.tags !== undefined &&
+              props.item.tags.slice(0, 3).map((tag, index) => {
+                return (
+                  <span
+                    key={index}
+                    className="tag mt-2"
+                    onClick={() => props.setSelectedTag(tag)}
+                  >
+                    {tag.toUpperCase()}
+                  </span>
+                );
+              })}
           </div>
         </div>
       </p>
