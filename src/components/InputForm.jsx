@@ -49,7 +49,32 @@ export default function InputForm(props) {
           Add Todo
         </button>
       </div>
-      <p className="info">type @ to add tags i.e. @node will add tag as node</p>
+      <div className="d-flex justify-content-between">
+        <p className="info">
+          type @ to add tags i.e. @node will add tag as node
+        </p>
+        <div className="drop_down">
+          <select
+            className="form-select"
+            aria-label="Default select example"
+            onChange={(e) => {
+              props.setSelectedTag(e.target.value);
+            }}
+            value={props.selectedTag}
+          >
+            <option defaultValue value="">
+              Filter Tags
+            </option>
+            {props.allTags.map((elem, index) => {
+              return (
+                <option key={index} value={elem}>
+                  {elem}
+                </option>
+              );
+            })}
+          </select>
+        </div>
+      </div>
     </>
   );
 }
