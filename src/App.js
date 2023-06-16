@@ -20,7 +20,7 @@ function App() {
       let tags = [];
       tasks.forEach((task) => {
         task.tags.forEach((tag) => {
-          if (!tags.includes(tag)) tags.push(tag);
+          if (!tags.includes(tag.toLowerCase())) tags.push(tag.toLowerCase());
         });
       });
       setAllTags(tags);

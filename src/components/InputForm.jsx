@@ -6,7 +6,9 @@ export default function InputForm(props) {
   const addTodo = () => {
     var arr = todo.split("@")[1];
     if (arr !== undefined) {
-      arr = arr.split(",");
+      arr = arr.split(",").map((item, index) => {
+        return item.trim().toLowerCase();
+      });
     }
     setTodo(todo.split("@")[0]);
     var new_task = {
