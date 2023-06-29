@@ -12,6 +12,7 @@ function App() {
     JSON.parse(localStorage.getItem("allTags")) || []
   );
   const [selectedTag, setSelectedTag] = useState("");
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
 
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
@@ -29,9 +30,17 @@ function App() {
     updateTags();
   }, [tasks]);
 
+  useEffect(() => {
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
   return (
-    <div className="container pb-4 shadow rounded-4 App">
-      <Header />
+    <div
+      className={`container mt-3 pb-4 shadow rounded-4 App bg-${theme} text-${
+        theme === "light" ? "dark" : "light"
+      }`}
+    >
+      <Header theme={theme} setTheme={setTheme} />
       <InputForm
         tasks={tasks}
         setTasks={setTasks}
@@ -39,6 +48,7 @@ function App() {
         setAllTags={setAllTags}
         selectedTag={selectedTag}
         setSelectedTag={setSelectedTag}
+        theme={theme}
       />
       {tasks.length === 0 ? "" : <h5 className="my-3">🐎 Tasks to Complete</h5>}
       <ul className="list-group">
@@ -56,6 +66,7 @@ function App() {
                 tasks={tasks}
                 done={false}
                 setSelectedTag={setSelectedTag}
+                theme={theme}
               />
             );
           }
@@ -78,6 +89,7 @@ function App() {
                 tasks={tasks}
                 done={true}
                 setSelectedTag={setSelectedTag}
+                theme={theme}
               />
             );
           }

@@ -13,7 +13,11 @@ export default function Todo(props) {
   };
 
   return (
-    <li className="list-group-item d-flex justify-content-between align-items-center pb-3">
+    <li
+      className={`list-group-item d-flex justify-content-between align-items-center pb-3 bg-${
+        props.theme
+      } text-${props.theme === "light" ? "dark" : "light"}`}
+    >
       <p>
         <div className="d-flex flex-column">
           <p className="task-text pl-4">{props.item.task}</p>
@@ -23,7 +27,9 @@ export default function Todo(props) {
                 return (
                   <span
                     key={index}
-                    className="tag mt-2"
+                    className={`tag mt-2 bg-${
+                      props.theme === "light" ? "dark" : "light"
+                    } text-${props.theme} fw-semibold`}
                     onClick={() => props.setSelectedTag(tag)}
                   >
                     {tag.toUpperCase()}
@@ -33,13 +39,30 @@ export default function Todo(props) {
           </div>
         </div>
       </p>
-      <button
-        type="button"
-        className={`btn btn-${props.done ? "danger" : "success"} h-75`}
-        onClick={props.done ? deleteTask : markCompleted}
-      >
-        {props.done === true ? "Delete" : "Done"}
-      </button>
+      <div className="btn-group">
+        {props.done !== true ? (
+          <button
+            type="button"
+            className={`btn fs-4 text-danger h-75`}
+            onClick={deleteTask}
+          >
+            <i className="fa-solid fa-trash"></i>
+          </button>
+        ) : (
+          ""
+        )}
+        <button
+          type="button"
+          className={`btn fs-4 text-${props.done ? "danger" : "primary"} h-75`}
+          onClick={props.done ? deleteTask : markCompleted}
+        >
+          {props.done === true ? (
+            <i className="fa-solid fa-trash"></i>
+          ) : (
+            <i className="fa-regular fa-circle-check"></i>
+          )}
+        </button>
+      </div>
     </li>
   );
 }

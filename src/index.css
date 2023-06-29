@@ -4,4 +4,5 @@ body {
 
 body *::selection {
   background-color: rgba(169, 255, 167, 0.833);
+  color: #000;
 }

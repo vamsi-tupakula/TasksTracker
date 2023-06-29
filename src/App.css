@@ -49,3 +49,15 @@ p {
 select {
   font-size: 15px !important;
 }
+
+input.placeholder-light::placeholder {
+  color: black;
+}
+
+input.placeholder-dark::placeholder {
+  color: white;
+}
+
+span {
+  opacity: 0.7;
+}

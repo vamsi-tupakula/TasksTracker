@@ -4,6 +4,9 @@ export default function InputForm(props) {
   const [todo, setTodo] = useState("");
 
   const addTodo = () => {
+    if (todo.length === 0) {
+      return;
+    }
     var arr = todo.split("@")[1];
     if (arr !== undefined) {
       arr = arr.split(",").map((item, index) => {
@@ -32,7 +35,9 @@ export default function InputForm(props) {
       <div className="input-group mb-3 w-4">
         <input
           type="text"
-          className="form-control py-2"
+          className={`form-control py-2 bg-${props.theme} text-${
+            props.theme === "light" ? "dark" : "light"
+          } placeholder-${props.theme}`}
           placeholder="Type something to add......"
           aria-label="todo"
           aria-describedby="button-addon2"
