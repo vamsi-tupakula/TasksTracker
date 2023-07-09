@@ -12,7 +12,6 @@ function App() {
     JSON.parse(localStorage.getItem("allTags")) || []
   );
   const [selectedTag, setSelectedTag] = useState("");
-  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
 
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
@@ -30,17 +29,11 @@ function App() {
     updateTags();
   }, [tasks]);
 
-  useEffect(() => {
-    localStorage.setItem("theme", theme);
-  }, [theme]);
-
   return (
     <div
-      className={`container mt-3 pb-4 shadow rounded-4 App bg-${theme} text-${
-        theme === "light" ? "dark" : "light"
-      }`}
+      className={`App container mx-auto shadow-lg shadow-gray-400 rounded-lg px-4 py-3 mt-3`}
     >
-      <Header theme={theme} setTheme={setTheme} />
+      <Header />
       <InputForm
         tasks={tasks}
         setTasks={setTasks}
@@ -48,10 +41,15 @@ function App() {
         setAllTags={setAllTags}
         selectedTag={selectedTag}
         setSelectedTag={setSelectedTag}
-        theme={theme}
       />
-      {tasks.length === 0 ? "" : <h5 className="my-3">🐎 Tasks to Complete</h5>}
-      <ul className="list-group">
+      {tasks.length === 0 ? (
+        ""
+      ) : (
+        <h5 className="my-3 text-xl sm:text-2xl font-bold">
+          🐎 Tasks to Complete
+        </h5>
+      )}
+      <ul className="list-none">
         {tasks.map((item, index) => {
           if (
             item.status === "todo" &&
@@ -66,15 +64,20 @@ function App() {
                 tasks={tasks}
                 done={false}
                 setSelectedTag={setSelectedTag}
-                theme={theme}
               />
             );
           }
           return null;
         })}
       </ul>
-      {tasks.length === 0 ? "" : <h5 className="my-3">✅ Completed tasks</h5>}
-      <ul className="list-group">
+      {tasks.length === 0 ? (
+        ""
+      ) : (
+        <h5 className="my-3 text-xl sm:text-2xl font-bold">
+          ✅ Completed tasks
+        </h5>
+      )}
+      <ul className="list-none">
         {tasks.map((item, index) => {
           if (
             item.status !== "todo" &&
@@ -89,7 +92,6 @@ function App() {
                 tasks={tasks}
                 done={true}
                 setSelectedTag={setSelectedTag}
-                theme={theme}
               />
             );
           }

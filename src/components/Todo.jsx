@@ -14,22 +14,18 @@ export default function Todo(props) {
 
   return (
     <li
-      className={`list-group-item d-flex justify-content-between align-items-center pb-3 bg-${
-        props.theme
-      } text-${props.theme === "light" ? "dark" : "light"}`}
+      className={`flex justify-between align-middle my-1 py-2 px-3 border-2 rounded-md shadow-sm shadow-gray-300 hover:shadow-gray-400`}
     >
       <p>
-        <div className="d-flex flex-column">
-          <p className="task-text pl-4">{props.item.task}</p>
-          <div className="tags d-flex align-items-start flex-wrap w-100">
+        <div className="flex flex-col gap-y-1">
+          <p className="text-lg font-semibold">{props.item.task}</p>
+          <div className="flex align-start flex-wrap w-100 gap-x-2">
             {props.item.tags !== undefined &&
               props.item.tags.slice(0, 3).map((tag, index) => {
                 return (
                   <span
                     key={index}
-                    className={`tag mt-2 bg-${
-                      props.theme === "light" ? "dark" : "light"
-                    } text-${props.theme} fw-semibold`}
+                    className={`text-sm my-1 py-1 px-2 bg-gray-300 hover:bg-gray-400 rounded-md cursor-pointer font-semibold`}
                     onClick={() => props.setSelectedTag(tag)}
                   >
                     {tag.toUpperCase()}
@@ -39,27 +35,23 @@ export default function Todo(props) {
           </div>
         </div>
       </p>
-      <div className="btn-group">
+      <div className="btn-group flex gap-x-4 text-xl pr-2">
         {props.done !== true ? (
-          <button
-            type="button"
-            className={`btn fs-4 text-danger h-75`}
-            onClick={deleteTask}
-          >
-            <i className="fa-solid fa-trash"></i>
+          <button type="button" className={`btn`} onClick={deleteTask}>
+            <i className="fa-solid fa-trash text-red-600 hover:text-red-700"></i>
           </button>
         ) : (
           ""
         )}
         <button
           type="button"
-          className={`btn fs-4 text-${props.done ? "danger" : "primary"} h-75`}
+          className={`btn`}
           onClick={props.done ? deleteTask : markCompleted}
         >
           {props.done === true ? (
-            <i className="fa-solid fa-trash"></i>
+            <i className="fa-solid fa-trash text-red-600 hover:text-red-700"></i>
           ) : (
-            <i className="fa-regular fa-circle-check"></i>
+            <i className="fa-regular fa-circle-check text-blue-400 hover:text-blue-600"></i>
           )}
         </button>
       </div>

@@ -32,12 +32,10 @@ export default function InputForm(props) {
 
   return (
     <>
-      <div className="input-group mb-3 w-4">
+      <div className="flex justify-between">
         <input
           type="text"
-          className={`form-control py-2 bg-${props.theme} text-${
-            props.theme === "light" ? "dark" : "light"
-          } placeholder-${props.theme}`}
+          className={`outline-none border-2 border-blue-500 pl-3 rounded-tl-md rounded-bl-md w-4/5 sm:w-3/4`}
           placeholder="Type something to add......"
           aria-label="todo"
           aria-describedby="button-addon2"
@@ -48,21 +46,22 @@ export default function InputForm(props) {
           onKeyDown={handleKeyDown}
         />
         <button
-          className="btn btn-primary"
+          className="py-2 px-3 bg-blue-400 hover:bg-blue-500 w-1/5 sm:w-1/4 rounded-tr-md rounded-br-md text-lg font-bold"
           type="button"
           id="button-addon2"
           onClick={addTodo}
         >
-          Add Todo
+          ADD
         </button>
       </div>
-      <div className="d-flex justify-content-between">
+      <div className="flex justify-between mt-3">
         <p className="info">
           type @ to add tags i.e. @node will add tag as node
         </p>
         <div className="drop_down">
-          <select
+          {/* <select
             className="form-select"
+            role="menu"
             aria-label="Default select example"
             onChange={(e) => {
               props.setSelectedTag(e.target.value);
@@ -75,11 +74,12 @@ export default function InputForm(props) {
             {props.allTags.map((elem, index) => {
               return (
                 <option key={index} value={elem}>
-                  {elem}
+                  {elem.toUpperCase()}
                 </option>
               );
             })}
-          </select>
+          </select> */}
+          {/* <Filters /> */}
         </div>
       </div>
     </>
