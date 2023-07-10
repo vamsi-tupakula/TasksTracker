@@ -31,7 +31,7 @@ function App() {
 
   return (
     <div
-      className={`App container mx-auto shadow-lg shadow-gray-400 rounded-lg px-4 py-3 mt-3`}
+      className={`App container mx-auto shadow-lg shadow-gray-400 rounded-lg px-4 py-2 mt-3`}
     >
       <Header />
       <InputForm
