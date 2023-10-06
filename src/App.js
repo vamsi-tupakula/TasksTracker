@@ -49,7 +49,7 @@ function App() {
           🐎 Tasks to Complete
         </h5>
       )}
-      <ul className="list-none">
+      <ul className="list-none max-h-96 overflow-auto">
         {tasks.map((item, index) => {
           if (
             item.status === "todo" &&
@@ -77,7 +77,7 @@ function App() {
           ✅ Completed tasks
         </h5>
       )}
-      <ul className="list-none">
+      <ul className="list-none max-h-96 overflow-auto">
         {tasks.map((item, index) => {
           if (
             item.status !== "todo" &&
