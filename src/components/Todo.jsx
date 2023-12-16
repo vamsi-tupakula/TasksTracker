@@ -31,7 +31,7 @@ export default function Todo(props) {
 
   return (
     <li
-      className={`flex justify-between align-middle my-1 py-2 px-3 border-2 rounded-md shadow-sm shadow-gray-300 hover:shadow-gray-400`}
+      className={`flex justify-between align-middle my-1 py-2 px-3 border-2 rounded-md shadow-sm shadow-gray-300 hover:shadow-gray-400 group`}
     >
       <div className="flex flex-col gap-y-1">
         {editing ? (
@@ -62,7 +62,7 @@ export default function Todo(props) {
             })}
         </div>
       </div>
-      <div className="btn-group flex gap-x-4 text-xl pr-2">
+      <div className="btn-group flex gap-x-4 text-xl pr-2 opacity-0 group-hover:opacity-100">
         <button type="button" className={`btn`} onClick={handleEdit}>
           {editing ? (
             <i class="fa-solid fa-floppy-disk text-green-600 hover:text-green-700"></i>

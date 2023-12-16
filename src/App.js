@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import Header from "./components/Header";
 import InputForm from "./components/InputForm";
@@ -42,62 +42,69 @@ function App() {
         selectedTag={selectedTag}
         setSelectedTag={setSelectedTag}
       />
-      {tasks.length === 0 ? (
-        ""
-      ) : (
-        <h5 className="my-3 text-xl sm:text-2xl font-bold">
+      <React.Fragment>
+        <h5 className="my-3 text-lg sm:text-xl font-bold text-center bg-green-300 py-1 rounded-md">
           🐎 Tasks to Complete
         </h5>
-      )}
-      <ul className="list-none max-h-96 overflow-auto scrollbar-hide">
-        {tasks.map((item, index) => {
-          if (
-            item.status === "todo" &&
-            (selectedTag === "" || item.tags.includes(selectedTag))
-          ) {
-            return (
-              <Todo
-                key={index}
-                index={index}
-                item={item}
-                setTasks={setTasks}
-                tasks={tasks}
-                done={false}
-                setSelectedTag={setSelectedTag}
-              />
-            );
-          }
-          return null;
-        })}
-      </ul>
-      {tasks.length === 0 ? (
-        ""
-      ) : (
-        <h5 className="my-3 text-xl sm:text-2xl font-bold">
+        {
+          (tasks.filter(item => item.status === "todo").length === 0)
+            ? <h2 className="text-sm my-1 py-1 px-2 font-semibold select-none" align="center">No Tasks Found</h2>
+            : (
+              <ul className="list-none max-h-96 overflow-auto scrollbar-hide">
+                {tasks.map((item, index) => {
+                  if (
+                    item.status === "todo" &&
+                    (selectedTag === "" || item.tags.includes(selectedTag))
+                  ) {
+                    return (
+                      <Todo
+                        key={index}
+                        index={index}
+                        item={item}
+                        setTasks={setTasks}
+                        tasks={tasks}
+                        done={false}
+                        setSelectedTag={setSelectedTag}
+                      />
+                    );
+                  }
+                  return null;
+                })}
+              </ul>
+            )
+        }
+
+        <h5 className="my-3 text-lg sm:text-xl font-bold text-center bg-green-300 py-1 rounded-md">
           ✅ Completed tasks
         </h5>
-      )}
-      <ul className="list-none max-h-96 overflow-auto scrollbar-hide">
-        {tasks.map((item, index) => {
-          if (
-            item.status !== "todo" &&
-            (selectedTag === "" || item.tags.includes(selectedTag))
-          ) {
-            return (
-              <Todo
-                key={index}
-                index={index}
-                item={item}
-                setTasks={setTasks}
-                tasks={tasks}
-                done={true}
-                setSelectedTag={setSelectedTag}
-              />
-            );
-          }
-          return null;
-        })}
-      </ul>
+        {
+          (tasks.filter(item => item.status !== "todo").length === 0)
+            ? <h2 className="text-sm my-1 py-1 px-2 font-semibold select-none" align="center">No Tasks Found</h2>
+            : (
+              <ul className="list-none max-h-96 overflow-auto scrollbar-hide">
+                {tasks.map((item, index) => {
+                  if (
+                    item.status !== "todo" &&
+                    (selectedTag === "" || item.tags.includes(selectedTag))
+                  ) {
+                    return (
+                      <Todo
+                        key={index}
+                        index={index}
+                        item={item}
+                        setTasks={setTasks}
+                        tasks={tasks}
+                        done={true}
+                        setSelectedTag={setSelectedTag}
+                      />
+                    );
+                  }
+                  return null;
+                })}
+              </ul>
+            )
+        }
+      </React.Fragment>
     </div>
   );
 }

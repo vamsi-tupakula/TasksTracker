@@ -36,7 +36,7 @@ export default function InputForm(props) {
       <div className="flex justify-between">
         <input
           type="text"
-          className={`outline-none border-2 border-green-400 text-lg font-semibold pl-3 rounded-tl-md rounded-bl-md w-4/5 sm:w-4/5`}
+          className={`outline-none border-2 border-green-400 text-lg pl-3 rounded-tl-md rounded-bl-md w-4/5 sm:w-4/5`}
           placeholder="Type something to add......"
           aria-label="todo"
           aria-describedby="button-addon2"
