@@ -62,7 +62,7 @@ export default function Todo(props) {
             })}
         </div>
       </div>
-      <div className="btn-group flex gap-x-4 text-xl pr-2 opacity-0 group-hover:opacity-100">
+      <div className="btn-group flex gap-x-4 text-xl pr-2 opacity-100 md:opacity-0 group-hover:opacity-100">
         <button type="button" className={`btn`} onClick={handleEdit}>
           {editing ? (
             <i class="fa-solid fa-floppy-disk text-green-600 hover:text-green-700"></i>
